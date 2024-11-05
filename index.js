@@ -53,7 +53,7 @@ app.get("/cart/total-quantity",(req,res)=>{
 
 app.get("/cart/total-price",(req,res)=>{
   let totalPrice = 0
-  let result = cart.forEach(data => totalPrice += data.price)
+  let result = cart.forEach(data => totalPrice += (data.price * data.quantity))
   res.json({ "totalPrice" : totalPrice})
 })
 
