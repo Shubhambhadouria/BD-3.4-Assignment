@@ -40,6 +40,7 @@ app.get("/cart/edit",(req,res)=>{
 app.get("/cart/delete",(req,res)=>{
   let productId = parseInt(req.query.productId)
   let cartItems = cart.filter(data => data.productId !== productId)
+  cart = cartItems
   res.json({ "cartItems" : cartItems})
 })
 
