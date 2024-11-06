@@ -48,9 +48,18 @@ app.get("/cart",(req,res)=>{
   res.json({ "cartItems" : cart})
 })
 
-app.get("/cart/total-quantity",(req,res)=>{
-  res.json({ "totalQuantity" : cart.length})
-})
+function calculateTotalQuantity(cart) {
+  let total = 0;
+  for (let i = 0; i < cart.length; i++) {
+    total += cart[i].quantity;
+  }
+  return total;
+}
+
+app.get('/cart/total-quantity', (req, res) => {
+  let result = calculateTotalQuantity(cart);
+  res.json({ totalQuantity: result });
+});
 
 app.get("/cart/total-price",(req,res)=>{
   let totalPrice = 0
